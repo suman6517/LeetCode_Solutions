@@ -3,7 +3,7 @@ public:
 
     long long int squartOfX(int num)
     {
-        int start =0;
+        int start =1;
         int end = num;
         long long int ans = -1;
         long long int mid = start + (end - start) /2;
