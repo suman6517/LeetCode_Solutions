@@ -1,43 +1,46 @@
 class Solution {
 public:
-
-    bool binarySearch(vector<int>& nums1 ,int target)
-    {
-        int start = 0;
-        int end =nums1.size()-1;
-        while(start <= end)
-        {
-            int mid = start+ (end - start)/2;
-
-            if (nums1[mid] == target)
-            {
-                return true;
-            }
-            else if (nums1[mid] > target)
-            {
-                end = mid -1;
-            }
-            else
-            {
-                start = mid +1;
-            }
-        }
-        return false;
-    }
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) 
     {
         sort(nums1.begin() , nums1.end());
-        unordered_set<int>preAns;
+        sort(nums2.begin() , nums2.end());
+        vector <int>ans;
 
-        for(auto it: nums2)
+        int point1 =0;
+        int point2 =0;
+
+        int size1 = nums1.size(); 
+        int size2= nums2.size();
+
+        while (point1 <size1 && point2 <size2)
         {
-            if(binarySearch(nums1 , it))
+            if (nums1[point1] == nums2[point2])
             {
-                preAns.insert(it);
+                ans.push_back(nums1[point1]);
+
+                while(point1 < size1-1 && nums1[point1] == nums1[point1+1])
+                {
+                    point1++;
+                }
+
+                while(point2 < size2-1 && nums2[point2] == nums2[point2+1])
+                {
+                    point2++;
+                }
+
+                point1++;
+                point2++;
+
+            }
+            else if (nums1[point1] > nums2[point2])
+            {
+                point2++;
+            }
+            else
+            {
+                point1++;
             }
         }
-
-        vector <int>ans(preAns.begin() , preAns.end());
 
         return ans;
     }
