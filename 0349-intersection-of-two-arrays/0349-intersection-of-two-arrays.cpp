@@ -1,38 +1,44 @@
 class Solution {
 public:
-   vector<int> fun(set<int>& nums1, set<int>& nums2){
-        int l1=nums1.size(),l2=nums2.size(),len;
-        
 
-        vector<int> ret;
+    bool binarySearch(vector<int>& nums1 ,int target)
+    {
+        int start = 0;
+        int end =nums1.size()-1;
+        while(start <= end)
+        {
+            int mid = start+ (end - start)/2;
 
-        for(auto it:nums1)
-        if(nums2.count(it))
-        ret.push_back(it);
-
-        return ret;
-        
-
+            if (nums1[mid] == target)
+            {
+                return true;
+            }
+            else if (nums1[mid] > target)
+            {
+                end = mid -1;
+            }
+            else
+            {
+                start = mid +1;
+            }
+        }
+        return false;
     }
-    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
-        
-        set<int> st,st2;
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) 
+    {
+        sort(nums1.begin() , nums1.end());
+        unordered_set<int>preAns;
 
-        for(int i=0;i<nums1.size();i++)
-        st.insert(nums1[i]);
-        
-        for(int i=0;i<nums2.size();i++)
-        st2.insert(nums2[i]);
-
-        int f=0,l1=st.size(),l2=st2.size();
-
-        if(l1>l2)
-        f++;
-        if(f==0){
-            return fun(st,st2);
+        for(auto it: nums2)
+        {
+            if(binarySearch(nums1 , it))
+            {
+                preAns.insert(it);
+            }
         }
-        else{
-            return fun(st2,st);
-        }
+
+        vector <int>ans(preAns.begin() , preAns.end());
+
+        return ans;
     }
 };
