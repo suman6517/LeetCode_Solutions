@@ -16,10 +16,14 @@ public:
             ans.push_back(sub);
             return ;
         }
-        rec(ans, nums , sub , size , index+1);
-        sub.push_back(nums[index]);
-        rec(ans, nums , sub , size , index+1);
+        
+        //exclude
+        rec(ans , nums, sub , size , index+1);
+
+        //Include
+        int element = nums[index];
+        sub.push_back(element);
+        rec(ans , nums, sub , size , index+1);
         sub.pop_back();
-       
     }
 };
