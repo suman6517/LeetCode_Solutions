@@ -3,27 +3,25 @@ public:
     vector<vector<int>> subsets(vector<int>& nums) 
     {
         vector<vector<int>>ans;
-        vector<int>sub;
-        int size = nums.size();
+        vector<int>output;
         int index = 0;
-        rec(ans, nums, sub , size , index);
+        solve(nums, output, index, ans);
         return ans;
     }
-    void rec(vector<vector<int>>&ans ,vector<int>& nums , vector<int>&sub , int size , int index)
+    void solve(vector<int> nums, vector<int> output, int index, vector<vector<int> >& ans)
     {
-        if (index >= size)
+        if (index >= nums.size())
         {
-            ans.push_back(sub);
+            ans.push_back(output);
             return ;
         }
         
         //exclude
-        rec(ans , nums, sub , size , index+1);
-
-        //Include
+        solve(nums, output, index+1, ans);
+        
+        //include
         int element = nums[index];
-        sub.push_back(element);
-        rec(ans , nums, sub , size , index+1);
-        sub.pop_back();
+        output.push_back(element);
+        solve(nums, output, index+1, ans);
     }
 };
