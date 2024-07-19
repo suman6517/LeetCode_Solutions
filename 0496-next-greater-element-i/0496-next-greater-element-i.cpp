@@ -2,34 +2,33 @@ class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) 
     {
-        vector<int>result;
-        bool found = false;
-        bool hasGreater = false;
-
-        for(int i = 0; i<nums1.size(); i++)
-
+        vector<int>result(nums1.size() , -1);
+        map<int , int>m;
+        stack<int>st;
+        int n = nums2.size()-1;
+        for(int i=n ; i>=0; i--)
         {
-            found = false;
-            hasGreater = false;
-            for (int j= 0; j<nums2.size() ; j++)
+            while(!st.empty() && nums2[i] > st.top())
             {
-                if(nums1[i] == nums2[j])
-                {
-                    found = true;
-                }
-                if(found ==true && nums2[j] > nums1[i])
-                {
-                    result.push_back(nums2[j]);
-                    hasGreater = true;
-                    break;
-                }
+                st.pop();
             }
-             if (!hasGreater)
+            
+            if(!st.empty())
             {
-                result.push_back(-1);
-            }
+                m[nums2[i]] = st.top();
 
+            }
+            
+            else
+            {
+                m[nums2[i]] = -1;
+            }
+            st.push(nums2[i]);
         }
-        return result;
+       for(int i =0 ; i<nums1.size() ; i++)
+       {
+        result[i] = m[nums1[i]];
+       }
+       return result;
     }
 };
