@@ -26,15 +26,15 @@ public:
             q.pop();
             if(node == NULL)
             {
-                str.append("#");
+                str.append("#,");  // Append "#," for NULL node
             }
             else
             {
-                str.append(to_string(node->val)+',');
+                str.append(to_string(node->val) + ',');  // Append value + ','
             }
             if(node != NULL)
             {
-                q.push(node ->left);
+                q.push(node->left);
                 q.push(node->right);
             }
         }
@@ -55,6 +55,8 @@ public:
         {
             TreeNode* temp = q.front();
             q.pop();
+            
+            // Process left child
             getline(s,str,',');
             if(str == "#")
             {
@@ -64,9 +66,11 @@ public:
             {
                 TreeNode* leftNode = new TreeNode(stoi(str));
                 temp->left = leftNode;
-                q.push(leftNode);
+                q.push(leftNode);  // Correct variable to push
             }
-              getline(s,str,',');
+            
+            // Process right child
+            getline(s,str,',');
             if(str == "#")
             {
                 temp->right = NULL;
@@ -75,9 +79,8 @@ public:
             {
                 TreeNode* rightNode = new TreeNode(stoi(str));
                 temp->right = rightNode;
-                q.push(rightNode);
+                q.push(rightNode);  // Correct variable to push
             }
-
         }
         return root;
     }
