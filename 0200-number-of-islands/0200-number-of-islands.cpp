@@ -1,57 +1,65 @@
 class Solution {
 public:
-    int solve(vector<vector<int>>& grid1, int i, int j, int color) {
-    if (grid1[i][j] != 1) return color;
-    
-    grid1[i][j] = color;
+void bfs(int row, int col, vector<vector<int>>&visit , vector<vector<char>>&grid , int rowSize, int colSize)
+{
+    visit[row][col] =1;
+    queue<pair<int,int>>qu;
+    qu.push({row , col});
 
-
-    /*for (int i = 0; i < grid1.size(); i++)
+    while(!qu.empty())
     {
-        for (int j = 0; j < grid1[0].size(); j++)
-        {
-            cout << grid1[i][j] << '\t';
-        }cout << endl;
-    }
-    cout << endl;*/
-    solve(grid1, i, j + 1, color); //right
-    solve(grid1, i + 1, j, color);  //down
-    solve(grid1, i - 1, j, color);  //up
-    solve(grid1, i, j-1, color);  //left
+        int row = qu.front().first;
+        int col =qu.front().second;
+        qu.pop();
 
+        //Traverse In The Neighbours
+        // for (int deltaRow =-1; deltaRow<=1; deltaRow++)
+        // {
+        //     for(int deltaCol= -1; deltaCol<=1; deltaCol++)
+        //     {
+        //         int nrow= row+deltaRow;
+        //         int ncol = col+deltaCol;
+        //         if(nrow >=0 && nrow < rowSize && ncol>=0 && ncol< colSize
+        //          && grid[nrow][ncol]=='1' && !visit[nrow][ncol])
+        //          {
+        //             visit[nrow][ncol]=1;
+        //             qu.push({nrow,ncol});
+        //          }
 
+        //     }
 
-    return color + 1;
-}
-
-
-int numIslands(vector<vector<char>>& grid) {
-    int res = 0, first_color = 2;
-
-    vector<vector<int>> grid1;
-
-    for (int i = 0; i < grid.size() + 2; i++)
-    {
-        vector<int> t(grid[0].size() + 2, 0);
-        grid1.push_back(t);
-    }
-
-    for (int i = 1; i < grid1.size() - 1; i++)
-    {
-        for (int j = 1; j < grid1[0].size() - 1; j++)
-        {
-            grid1[i][j] = (int)grid[i - 1][j - 1]-48;
+            int dRow[] = {-1, 1, 0, 0};
+            int dCol[] = {0, 0, -1, 1};
+            for (int i = 0; i < 4; i++) 
+            {
+                int nrow = row + dRow[i];
+                int ncol = col + dCol[i];
+                if (nrow >= 0 && nrow < rowSize && ncol >= 0 && ncol < colSize
+                    && grid[nrow][ncol] == '1' && !visit[nrow][ncol]) {
+                    visit[nrow][ncol] = 1;
+                    qu.push({nrow, ncol});
+                }
+            }
         }
-    }
-    int color = 10;
-    for (int i = 1; i < grid1.size() - 1; i++)
-    {
-        for (int j = 1; j < grid1[0].size()-1; j++)
-        {
-            if(grid1[i][j] == 1)
-            color = solve(grid1, i, j, color);
-        }
-    }
-    return color-10;
 }
+    int numIslands(vector<vector<char>>& grid) 
+    {
+        int isLand =0;
+        int rowSize = grid.size();
+        int colSize = grid[0].size();
+        vector<vector<int>>visit(rowSize ,vector<int>(colSize, 0));
+
+        for(int row = 0; row<rowSize ; row++)
+        {
+            for(int col =0; col<colSize ; col++)
+            {
+                if(!visit[row][col] && grid[row][col] =='1')
+                {
+                    isLand++;
+                    bfs(row , col, visit, grid , rowSize, colSize);
+                }
+            }
+        }
+        return isLand;
+    }
 };
