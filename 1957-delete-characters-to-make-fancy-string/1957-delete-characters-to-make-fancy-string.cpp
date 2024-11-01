@@ -1,22 +1,29 @@
 class Solution {
 public:
-    string makeFancyString(string s) 
+    string makeFancyString(string &s) 
     {
-        if(s.length() <=2)
+        int resizeLen=0;
+        int len =0;
+        char prev = '$';
+        for(char c:s)
         {
-            return s;
-        }
-        string ans ="";
-        for (int i=0; i<s.length()-2; i++)
-        {
-            if(s[i]==s[i+1] && s[i]==s[i+2])
+            if(prev == c)
             {
-                continue;
+                len++;
             }
-            ans+=s[i];
+            else
+            {
+                len =1;
+            }
+            if(len <=2)
+            {
+                s[resizeLen++] = c;
+                // i++;
+            }
+            prev =c;
         }
-        ans+=s[s.length()-2];
-        ans+=s[s.length()-1];
-        return ans;
+        s.resize(resizeLen);
+        return s;
+
     }
 };
