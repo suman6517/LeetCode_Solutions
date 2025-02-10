@@ -3,18 +3,19 @@ public:
     string clearDigits(string s) 
     {
         string ans;
-        for(char i : s)
+        for(int i=0; i<s.length() ; i++)
         {
-            if(i>= '0' && i <='9')
+            if(s[i]>= '0' && s[i] <='9')
             {
                 if(!ans.empty())
                 {
                     ans.pop_back();
                 }
+                
             }
             else
                 {
-                    ans.push_back(i);
+                    ans.push_back(s[i]);
                 }
         }
         return ans;
