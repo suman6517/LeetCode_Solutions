@@ -8,28 +8,24 @@ public:
         int zeroes = 0;
         int length = nums.size();
 
-        while(rightPointer<length)
+        while (rightPointer < length)
         {
-            if(nums[rightPointer] == 0)
-            {
+            if (nums[rightPointer] == 0)
                 zeroes++;
-            }
-            while (zeroes > k)
+
+            if (zeroes > k)
             {
                 if (nums[leftPointer] == 0)
-                {
                     zeroes--;
-                }
                 leftPointer++;
             }
-            // if(zeroes <= k)
-            // {
-                int length = rightPointer - leftPointer +1;
-                 maxLength = max(length , maxLength);
-            // }
+
+            // Directly update maxLength without redundant check
+            maxLength = max(maxLength, rightPointer - leftPointer + 1);
+
             rightPointer++;
-            
         }
+
         return maxLength;
         
     }
