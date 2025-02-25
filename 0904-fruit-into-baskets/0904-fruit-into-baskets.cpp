@@ -11,7 +11,7 @@ public:
         {
             mpp[fruits[right]]++;
     
-                while(mpp.size() > k)
+                if(mpp.size() > k)
                 {
                     mpp[fruits[left]]--;
                     if(mpp[fruits[left]] == 0)
