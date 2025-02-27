@@ -13,35 +13,20 @@ class Solution {
 public:
     int maxDepth(TreeNode* root) 
     {
-        //Using Level Order Solution
-        int maxheight = 0;
         if(root == NULL)
         {
-            return maxheight;
+            return 0;
         }
-        queue<TreeNode* >que;
-        que.push(root);
-        while(!que.empty())
+        int left =maxDepth(root ->left);
+        int right =maxDepth(root ->right);
+        if(left > right)
         {
-            int size = que.size();
-            maxheight++;
-
-            for(int i= 0; i<size; i++)
-            {
-                TreeNode* temp = que.front();
-                que.pop();
-                if(temp ->left != NULL)
-                {
-                    que.push(temp ->left);
-                }
-
-                if(temp->right != NULL)
-                {
-                    que.push(temp->right);
-                }
-            }
+            return left+1;
         }
-        return maxheight;
-        
+        else if (right >left)
+        {
+            return right+1;
+        }
+        return left+1;
     }
 };
