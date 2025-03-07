@@ -4,43 +4,32 @@ public:
     {
         int lengthS = s.length();
         int lengthT = t.length();
-        if (lengthS < lengthT) return "";
-
-        unordered_map<char, int> mpp;
-        for (char c : t) 
+        int right = 0 , left =0 , minLength = INT_MAX , count = 0 , startingIndex = -1;
+        unordered_map<char,int>mpp;
+        for(int i =0 ; i<lengthT ; i++)
         {
-            mpp[c]++;
+            mpp[t[i]] ++ ;
         }
-        
-        int left = 0, right = 0, minLength = INT_MAX, startingIndex = -1;
-        int required = mpp.size();  // Number of unique characters needed
 
-        while (right < lengthS) 
+        while(right < lengthS)
         {
-            mpp[s[right]]--;
-            if (mpp[s[right]] == 0) 
+            if(--mpp[s[right]] ==0)
             {
-                required--;  // Fully matched a unique character
+                count++;
             }
-
-            while (required == 0)  // All unique characters are matched
+            while(count == lengthT)
             {
-                if (right - left + 1 < minLength) 
+                if(right-left +1 < minLength) 
                 {
-                    minLength = right - left + 1;
-                    startingIndex = left;
+                    minLength = rigth - left+1;
                 }
-
-                if (mpp[s[left]] == 0) 
+                if(++mpp[s[left]] >0)
                 {
-                    required++;  // A fully matched character is now missing
+                    count --;
                 }
-                mpp[s[left]]++;
                 left++;
             }
-            right++;
         }
-
-        return startingIndex == -1 ? "" : s.substr(startingIndex, minLength);
+        return startingIndex == -1 ?"": s.substr(startingIndex ,lengthT);
     }
 };
