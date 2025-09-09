@@ -1,15 +1,24 @@
 class Solution {
 public:
-void DFS(int node , vector<bool>&visit, vector<int>AdjList[])
+void BFS(int node , vector<bool>&visit, vector<int>AdjList[])
 {
-    visit[node] = 1;
-    for(auto it: AdjList[node])
-    {
+   visit[node]=1;
+   queue<int>q;
+   q.push(node);
+   while(!q.empty())
+   {
+    int current = q.front();
+     q.pop();
+     for(auto it:AdjList[current])
+     {
         if(!visit[it])
         {
-            DFS(it,visit,AdjList);
+            q.push(it);
+            visit[it]=1;
         }
-    }
+     }
+
+   }
 }
     int findCircleNum(vector<vector<int>>& isConnected) 
     {
@@ -29,6 +38,7 @@ void DFS(int node , vector<bool>&visit, vector<int>AdjList[])
                 }
             }
         }
+        
         vector<bool>visit(rowSize,0);
         int Provinces =0;
 
@@ -37,7 +47,7 @@ void DFS(int node , vector<bool>&visit, vector<int>AdjList[])
             if(!visit[i])
             {
                 Provinces++;
-                DFS(i ,visit,AdjList);
+                BFS(i ,visit,AdjList);
             }
         }
         return Provinces;
