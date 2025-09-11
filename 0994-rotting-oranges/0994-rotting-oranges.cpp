@@ -1,59 +1,61 @@
 class Solution {
 public:
+int rowDirec[4] = {1,-1,0,0};
+int colDirec[4] = {0,0,1,-1};
     int orangesRotting(vector<vector<int>>& grid) 
     {
-        int rowSize = grid.size();
-        int colSize = grid[0].size();
-        queue<pair<pair<int,int> ,int>>q;
-        vector<vector<int>>visit;
+       queue<pair<int,int>>q;
+       int fresh = 0;
 
-        for(int i =0; i<rowSize; i++)
+       for(int i =0 ; i<grid.size(); i++)
+       {
+        for(int j =0 ; j<grid[0].size(); j++)
         {
-            for(int j=0; j<colSize; j++)
+            if(grid[i][j] == 1)
             {
-                if(grid[i][j]==2)
-                {
-                    q.push({ {i,j} ,0});
-                    visit[i][j] = 2;
-                }
-                else
-                {
-                    visit[i][j] =0;
-                }
+               fresh++; 
+            }
+            else if(grid[i][j] == 2)
+            {
+                q.push({i,j});
             }
         }
-        int time = 0;
-        int deltaRow[]={-1,0,+1,0};
-        int deltaCol[]={0,+1,0,-1};
-        while(!q.empty())
-        {
-            int row =q.front().first.first;
-            int col = q.front().first.second;
-            int timer = q.front().second;
-            time = max(timer, time);
+       }
+       if(fresh == 0)
+       {
+        return 0;
+       }
+
+       int timer = -1;
+       while(!q.empty())
+       {
+          int size = q.size();
+          timer++;
+
+          for(int i =0; i<size; i++)
+          {
+            auto[x,y] = q.front();
+            q.pop();
 
             for(int i =0; i<4; i++)
             {
-                int nrow = row+deltaRow[i];
-                int ncol = col+deltaCol[i];
-                if(nrow >=0 && nrow < rowSize && ncol >=0 && ncol<colSize && grid[nrow][ncol]==1 && 
-                   visit[nrow][ncol] != 2)
+                int newx = x+rowDirec[i];
+                int newy = y+colDirec[i];
+
+                if(newx >=0 && newx<grid.size() && newy>=0 && newy<grid[0].size() && grid[newx][newy] == 1)
                 {
-                    q.push({{nrow , ncol}, timer+1});
-                    visit[nrow][ncol] = 2;
+                    grid[newx][newy] =2;
+                    fresh --;
+                    q.push({newx,newy});
                 }
             }
-        }
-        for(int i=0; i<rowSize; i++)
-        {
-            for(int j =0; j<colSize ; j++)
-            {
-                if(vis[i][j] !=2 && grid[i][j]==1)
-                {
-                    return -1;
-                }
-            }
-        }
-        return time;
+
+          }
+       }
+       if(fresh == 0)
+       {
+        return timer;
+       }
+       return -1;
     }
 };
