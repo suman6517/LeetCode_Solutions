@@ -10,55 +10,48 @@
  */
 class Solution {
 public:
-    ListNode* addTwoNumbers(ListNode* head1, ListNode* head2) 
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) 
     {
         ListNode* dummyNode = new ListNode(-1);
         ListNode* currentNode = dummyNode;
-        int carry = 0;
-        ListNode* temp1 = head1;
-        ListNode* temp2 = head2;
+        int carry =0;
 
-        // Now we have to traverse to the entire LL
+        ListNode* temp1 = l1;
+        ListNode* temp2 = l2;
 
-        while(temp1 != NULL || temp2 != NULL)
+        while(temp1 != NULL || temp2!= NULL)
         {
             int sum = carry;
 
-            if(temp1 != nullptr)
+            if(temp1 != NULL)
             {
-                sum+= temp1 ->val;
+                sum += temp1 ->val;
             }
-            if(temp2 != nullptr)
+            if(temp2 != NULL)
             {
-                sum += temp2->val;
+                sum += temp2 ->val;
             }
 
-            ListNode* firstNodeSum = new ListNode(sum %10);
+            ListNode* NodeSum = new ListNode(sum%10);
             carry = sum/10;
+            currentNode ->next=NodeSum;
+            currentNode = currentNode -> next;
 
-            currentNode ->next = firstNodeSum ;
-
-            currentNode = currentNode ->next;
-
-            if(temp1 != nullptr) temp1 = temp1 ->next;
-            if(temp2 != nullptr) temp2 = temp2 ->next;
-
-           
-
+            if(temp1 != NULL)
+            {
+                temp1 = temp1->next;
+            }
+            if(temp2 != NULL)
+            {
+                temp2 = temp2 -> next;
+            }
         }
-
-        // Now check if the carry is 0 or not 
-        if(carry !=0 )
+        if(carry !=0)
         {
-            ListNode* addCarry = new ListNode(carry);
-
-            currentNode ->next = addCarry;
+            ListNode* carryNode = new ListNode(carry);
+            currentNode -> next = carryNode;
         }
 
-        // ListNode* afterSomeHead = dummyNode -> next;
-
-        return dummyNode->next;
-
-        
+        return dummyNode -> next;
     }
 };
