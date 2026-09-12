@@ -11,21 +11,22 @@
  */
 class Solution {
 public:
-void getPostOrder(TreeNode* root , vector<int>&ans)
+void TraversePost(TreeNode* root , vector<int>&postOrder)
 {
     if(root == NULL)
     {
-        return ;
+        return;
     }
-    getPostOrder(root ->left , ans);
-    getPostOrder(root ->right,ans);
-    ans.push_back(root ->val);
+    TraversePost(root -> left , postOrder);
+    TraversePost(root->right ,postOrder);
+    postOrder.push_back(root -> val);
+
 }
     vector<int> postorderTraversal(TreeNode* root) 
     {
-        vector<int>ans;
-        getPostOrder(root ,ans);
-        return ans;
+        vector<int> postOrder;
+        TraversePost(root, postOrder);
+        return postOrder;
         
     }
 };
