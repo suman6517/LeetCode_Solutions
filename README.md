@@ -12,6 +12,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0234-palindrome-linked-list](https://github.com/suman6517/LeetCode_Solutions/tree/main/0234-palindrome-linked-list/) | Easy |
 | [0237-delete-node-in-a-linked-list](https://github.com/suman6517/LeetCode_Solutions/tree/main/0237-delete-node-in-a-linked-list/) | Medium |
 | [0328-odd-even-linked-list](https://github.com/suman6517/LeetCode_Solutions/tree/main/0328-odd-even-linked-list/) | Medium |
+| [2095-delete-the-middle-node-of-a-linked-list](https://github.com/suman6517/LeetCode_Solutions/tree/main/2095-delete-the-middle-node-of-a-linked-list/) | Medium |
 ## Recursion
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -27,6 +28,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0234-palindrome-linked-list](https://github.com/suman6517/LeetCode_Solutions/tree/main/0234-palindrome-linked-list/) | Easy |
+| [2095-delete-the-middle-node-of-a-linked-list](https://github.com/suman6517/LeetCode_Solutions/tree/main/2095-delete-the-middle-node-of-a-linked-list/) | Medium |
 ## Stack
 | Problem Name | Difficulty |
 | ------- | ------- |
