@@ -10,35 +10,22 @@
  * };
  */
 class Solution {
-void swapNode(TreeNode* leftNode , TreeNode* rightNode , TreeNode* root)
-{
-    if(leftNode == NULL && rightNode ==NULL)
-    {
-        return;
-    }
-    root -> left = rightNode;
-    root -> right = leftNode;
-    TreeNode* left = root -> left;
-    TreeNode* right = root -> right;
-    if(left != NULL)
-    {
-        swapNode(left -> left , left-> right  , left);
-    }
-    if(right != NULL)
-    {
-        swapNode(right -> left , right->right , right);
-    }
-   
-}
-
 public:
     TreeNode* invertTree(TreeNode* root) 
     {
-     if(root == NULL)
-     {
+        if(root == NULL)
+        {
+            return root;
+        }
+
+        TreeNode* temp = root->left;
+        root->left = root->right;
+        root->right = temp;
+
+        invertTree(root ->left);
+        invertTree(root -> right);
+
         return root;
-     }
-    swapNode(root ->left , root -> right , root);
-    return root;
+        
     }
 };
