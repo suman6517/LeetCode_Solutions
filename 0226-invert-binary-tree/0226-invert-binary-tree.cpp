@@ -10,51 +10,35 @@
  * };
  */
 class Solution {
+void swapNode(TreeNode* leftNode , TreeNode* rightNode , TreeNode* root)
+{
+    if(leftNode == NULL && rightNode ==NULL)
+    {
+        return;
+    }
+    root -> left = rightNode;
+    root -> right = leftNode;
+    TreeNode* left = root -> left;
+    TreeNode* right = root -> right;
+    if(left != NULL)
+    {
+        swapNode(left -> left , left-> right  , left);
+    }
+    if(right != NULL)
+    {
+        swapNode(right -> left , right->right , right);
+    }
+   
+}
+
 public:
     TreeNode* invertTree(TreeNode* root) 
     {
-        if(root == NULL)
-        {
-            return root;
-        }
-
-        queue<TreeNode*>qu;
-        qu.push(root);
-
-        while(!qu.empty())
-        {
-            int size = qu.size();
-            TreeNode* temp = NULL;
-
-            for(int i =0; i< size; i++)
-            {
-                TreeNode* node = qu.front();
-                qu.pop();
-
-                if(node -> left != NULL && node-> right != NULL)
-                {
-                    temp = node -> right;
-                    node -> right = node ->left;
-                    node -> left = temp;
-
-                    qu.push(node ->left);
-                    qu.push(node -> right);
-                }
-                else if( node -> left != NULL && node -> right == NULL)
-                {
-                    node -> right = node -> left;
-                    node -> left = NULL;
-                    qu.push(node -> right);
-                }
-                else if(node -> right != NULL && node ->left == NULL)
-                {
-                    node -> left = node ->right;
-                    node -> right = NULL;
-                    qu.push(node -> left);
-                }
-            }
-        }
-
+     if(root == NULL)
+     {
         return root;
+     }
+    swapNode(root ->left , root -> right , root);
+    return root;
     }
 };
