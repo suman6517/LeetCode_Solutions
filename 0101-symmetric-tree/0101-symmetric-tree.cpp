@@ -11,27 +11,29 @@
  */
 class Solution {
 public:
-bool getAns(TreeNode* leftNode , TreeNode* rightNode)
+bool isSameTree(TreeNode* leftNode , TreeNode* rightNode)
 {
-    if(leftNode == NULL && rightNode == NULL)
+    if(leftNode == NULL && rightNode ==NULL)
     {
         return true;
     }
-    if(leftNode == NULL || rightNode == NULL)
+    if(leftNode == NULL || rightNode ==NULL)
     {
         return false;
     }
-   if (leftNode->val != rightNode->val) 
-    {
-            return false;
-    }
-
-    return getAns(leftNode ->left , rightNode ->right)
-        && getAns(leftNode ->right ,rightNode ->left);
-
+    return(leftNode -> val == rightNode->val) &&
+        isSameTree(leftNode -> left , rightNode -> right) &&
+        isSameTree(leftNode->right , rightNode->left);
 }
     bool isSymmetric(TreeNode* root) 
     {
-        return ((root == NULL) || getAns( root ->left , root->right));
+        if(root == NULL)
+        {
+            return true;
+        }
+
+        TreeNode* left = root -> left;
+        TreeNode* right = root -> right;
+        return isSameTree(left , right);
     }
 };
