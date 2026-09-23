@@ -113,4 +113,16 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0700-search-in-a-binary-search-tree](https://github.com/suman6517/LeetCode_Solutions/tree/main/0700-search-in-a-binary-search-tree/) | Easy |
+## Array
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0053-maximum-subarray](https://github.com/suman6517/LeetCode_Solutions/tree/main/0053-maximum-subarray/) | Medium |
+## Divide and Conquer
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0053-maximum-subarray](https://github.com/suman6517/LeetCode_Solutions/tree/main/0053-maximum-subarray/) | Medium |
+## Dynamic Programming
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0053-maximum-subarray](https://github.com/suman6517/LeetCode_Solutions/tree/main/0053-maximum-subarray/) | Medium |
 <!---LeetCode Topics End-->
