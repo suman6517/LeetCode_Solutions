@@ -118,6 +118,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- | ------- |
 | [0053-maximum-subarray](https://github.com/suman6517/LeetCode_Solutions/tree/main/0053-maximum-subarray/) | Medium |
 | [0152-maximum-product-subarray](https://github.com/suman6517/LeetCode_Solutions/tree/main/0152-maximum-product-subarray/) | Medium |
+| [1186-maximum-subarray-sum-with-one-deletion](https://github.com/suman6517/LeetCode_Solutions/tree/main/1186-maximum-subarray-sum-with-one-deletion/) | Medium |
 ## Divide and Conquer
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -127,4 +128,5 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- | ------- |
 | [0053-maximum-subarray](https://github.com/suman6517/LeetCode_Solutions/tree/main/0053-maximum-subarray/) | Medium |
 | [0152-maximum-product-subarray](https://github.com/suman6517/LeetCode_Solutions/tree/main/0152-maximum-product-subarray/) | Medium |
+| [1186-maximum-subarray-sum-with-one-deletion](https://github.com/suman6517/LeetCode_Solutions/tree/main/1186-maximum-subarray-sum-with-one-deletion/) | Medium |
 <!---LeetCode Topics End-->
