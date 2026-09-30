@@ -2,23 +2,25 @@ class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) 
     {
-        unordered_map<int, int> subNum;
-        subNum[0] = 1;  
+        unordered_map<int , int>freq;
+        freq[0] = 1;
 
-        int total = 0, count = 0;
+        int total =0;
+        int count =0;
 
-
-        for (int n : nums) {
-            total += n;
-
-            if (subNum.find(total - k) != subNum.end()) {
-                count += subNum[total - k];
+        for(int it:nums)
+        {
+            total += it;
+            if(freq.find(total -k) != freq.end())
+            {
+                count +=freq[total-k];
             }
 
-            subNum[total]++;
+            freq[total]++;
+
         }
 
         return count;
-
+        
     }
 };
