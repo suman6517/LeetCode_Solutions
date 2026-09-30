@@ -95,6 +95,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0141-linked-list-cycle](https://github.com/suman6517/LeetCode_Solutions/tree/main/0141-linked-list-cycle/) | Easy |
 | [0142-linked-list-cycle-ii](https://github.com/suman6517/LeetCode_Solutions/tree/main/0142-linked-list-cycle-ii/) | Medium |
 | [0202-happy-number](https://github.com/suman6517/LeetCode_Solutions/tree/main/0202-happy-number/) | Easy |
+| [0560-subarray-sum-equals-k](https://github.com/suman6517/LeetCode_Solutions/tree/main/0560-subarray-sum-equals-k/) | Medium |
 ## Floyd's Cycle Finding Algorithm
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -118,6 +119,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- | ------- |
 | [0053-maximum-subarray](https://github.com/suman6517/LeetCode_Solutions/tree/main/0053-maximum-subarray/) | Medium |
 | [0152-maximum-product-subarray](https://github.com/suman6517/LeetCode_Solutions/tree/main/0152-maximum-product-subarray/) | Medium |
+| [0560-subarray-sum-equals-k](https://github.com/suman6517/LeetCode_Solutions/tree/main/0560-subarray-sum-equals-k/) | Medium |
 | [0724-find-pivot-index](https://github.com/suman6517/LeetCode_Solutions/tree/main/0724-find-pivot-index/) | Easy |
 | [0918-maximum-sum-circular-subarray](https://github.com/suman6517/LeetCode_Solutions/tree/main/0918-maximum-sum-circular-subarray/) | Medium |
 | [1186-maximum-subarray-sum-with-one-deletion](https://github.com/suman6517/LeetCode_Solutions/tree/main/1186-maximum-subarray-sum-with-one-deletion/) | Medium |
@@ -146,5 +148,6 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Prefix Sum
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0560-subarray-sum-equals-k](https://github.com/suman6517/LeetCode_Solutions/tree/main/0560-subarray-sum-equals-k/) | Medium |
 | [0724-find-pivot-index](https://github.com/suman6517/LeetCode_Solutions/tree/main/0724-find-pivot-index/) | Easy |
 <!---LeetCode Topics End-->
